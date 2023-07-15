@@ -28,8 +28,10 @@ app.use((req, res, next) => {
 //  Router
 app.use("/", mainRouter);
 // Socket methods
+/* io.on("connection", (socket) => {
 
-// Listem
+}); */
+// Listen
 httpServer.listen(8080, () => {
     console.log("Server is now listening at port: 8080.");
 });

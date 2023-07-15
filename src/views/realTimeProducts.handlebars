@@ -1,0 +1,36 @@
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/socket.js"></script>
+<h1>Products: </h1>
+<div id="list">
+    {{#each products}}
+    <div>
+        <ul>
+            <li><b>id: </b>{{this.id}}</li>
+            <li><b>title: </b>{{this.title}}</li>
+            <li><b>description: </b>{{this.description}}</li>
+            <li><b>price: </b>{{this.price}}</li>
+            <li><b>thumbnails: </b>{{this.thumbnails}}</li>
+            <li><b>code: </b>{{this.code}}</li>
+            <li><b>stock: </b>{{this.stock}}</li>
+            <li><b>category: </b>{{this.category}}</li>
+            <li><b>status: </b>{{this.status}}</li>
+        </ul>
+    </div>
+    {{/each}}
+</div>
+<div>
+    <form action="/realTimeProducts" method="post">Add new product
+        <ul>
+            <li><label for="title">title </label><input type="text" name="title" id="" /></li>
+            <li><label for="description">description </label><input type="text" name="description" id="" /></li>
+            <li><label for="price">price </label><input type="text" name="price" id="" /></li>
+            <li><label for="code">code </label><input type="text" name="code" id="" /></li>
+            <li><label for="stock">stock </label><input type="text" name="stock" id="" /></li>
+            <li><label for="category">category </label><input type="text" name="category" id="" /></li>
+            <li><label for="status">status </label><input type="text" name="status" id="" /></li>
+            <li><label for="thumbnails">Select thumbnails: </label><input type="file" id="thumbnails" name="thumbnails"
+                    multiple /></li>
+        </ul>
+        <input type="submit" value="send" />
+    </form>
+</div>
