@@ -20,18 +20,17 @@
     {{/each}}
 </div>
 <div>
-    <form action="/realTimeProducts" method="post">Add new product
+    <form>Add a new product
         <ul>
-            <li><label for="title">title </label><input type="text" name="title" id="" /></li>
-            <li><label for="description">description </label><input type="text" name="description" id="" /></li>
-            <li><label for="price">price </label><input type="text" name="price" id="" /></li>
-            <li><label for="code">code </label><input type="text" name="code" id="" /></li>
-            <li><label for="stock">stock </label><input type="text" name="stock" id="" /></li>
-            <li><label for="category">category </label><input type="text" name="category" id="" /></li>
-            <li><label for="status">status </label><input type="text" name="status" id="" /></li>
-            <li><label for="thumbnails">Select thumbnails: </label><input type="file" id="thumbnails" name="thumbnails"
-                    multiple /></li>
+            <li><label>title </label><input type="text" id="title" /></li>
+            <li><label>description </label><input type="text" id="description" /></li>
+            <li><label>price </label><input type="text" id="price" /></li>
+            <li><label>code </label><input type="text" id="code" /></li>
+            <li><label>stock </label><input type="text" id="stock" /></li>
+            <li><label>category </label><input type="text" id="category" /></li>
+            <li><label>status </label><input type="text" id="status" /></li>
+            <li><label>select thumbnails: </label><input type="file" id="thumbnails" multiple /></li>
         </ul>
-        <input type="submit" value="send" />
+        <button onclick="addProduct()">send</button>
     </form>
 </div>

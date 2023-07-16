@@ -33,9 +33,10 @@ mainRouter.post("/realTimeProducts", uploader.array("thumbnails"), async (req, r
                 req.files.forEach(file => product.thumbnails.push(file.path));
             }
             const result = await pManager.addProduct(product);
-            const _product = (await pManager.getProductById(result.payload.id)).payload;
-            req.io.emit("newProduct", _product);
-            res.redirect("/realTimeProducts");
+            product.id = result.payload.id;
+            if (!product.thumbnails) product.thumbnails = "";
+            req.io.emit("newProduct", product);
+            res.sendStatus(200);
         }
     } catch (e) {
         res.status(500).send({ status: "error while adding new product", error: e });
