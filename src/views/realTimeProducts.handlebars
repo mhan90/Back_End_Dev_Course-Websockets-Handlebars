@@ -1,5 +1,4 @@
 <script src="/socket.io/socket.io.js"></script>
-<script src="/js/socket.js"></script>
 <h1>Products: </h1>
 <div id="list">
     {{#each products}}
@@ -20,17 +19,21 @@
     {{/each}}
 </div>
 <div>
-    <form>Add a new product
+    <form action="/realTimeProducts" method="post" enctype="multipart/form-data">Add a new product
         <ul>
-            <li><label>title </label><input type="text" id="title" /></li>
-            <li><label>description </label><input type="text" id="description" /></li>
-            <li><label>price </label><input type="text" id="price" /></li>
-            <li><label>code </label><input type="text" id="code" /></li>
-            <li><label>stock </label><input type="text" id="stock" /></li>
-            <li><label>category </label><input type="text" id="category" /></li>
-            <li><label>status </label><input type="text" id="status" /></li>
-            <li><label>select thumbnails: </label><input type="file" id="thumbnails" multiple /></li>
+            <li><label for="title">title </label><input type="text" id="title" name="title" /></li>
+            <li><label for="description">description </label><input type="text" id="description" name="description" />
+            </li>
+            <li><label for="price">price </label><input type="text" id="price" name="price" /></li>
+            <li><label for="code">code </label><input type="text" id="code" name="code" /></li>
+            <li><label for="stock">stock </label><input type="text" id="stock" name="stock" /></li>
+            <li><label for="category">category </label><input type="text" id="category" name="category" /></li>
+            <li><label for="status">status </label><input type="text" id="status" name="status" /></li>
+            <li><label for="thumbnails">select thumbnails: </label><input type="file" id="thumbnails" name="thumbnails"
+                    multiple /></li>
         </ul>
-        <button onclick="addProduct()">send</button>
+        <button>add</button>
     </form>
 </div>
+
+<script src="/js/socket.js"></script>

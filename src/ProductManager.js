@@ -53,7 +53,7 @@ export default class ProductManager {
 
                 products.push(newProduct);
                 await this.#saveProductsToFile(products);
-                return { status: "success", payload: { id: newProduct.id } };
+                return { status: "success", payload: { product: newProduct } };
             } else {
                 return { status: "error", error: `product with code ${code} already exists` };
             }

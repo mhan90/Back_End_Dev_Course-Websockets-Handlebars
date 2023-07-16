@@ -33,9 +33,7 @@ mainRouter.post("/realTimeProducts", uploader.array("thumbnails"), async (req, r
                 req.files.forEach(file => product.thumbnails.push(file.path));
             }
             const result = await pManager.addProduct(product);
-            product.id = result.payload.id;
-            if (!product.thumbnails) product.thumbnails = "";
-            req.io.emit("newProduct", product);
+            req.io.emit("newProduct", result.payload.product);
             res.sendStatus(200);
         }
     } catch (e) {
