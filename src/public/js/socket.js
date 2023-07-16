@@ -1,4 +1,5 @@
 const socket = io();
+
 socket.on("newProduct", (product) => {
     let productList = document.getElementById("list");
     productList.innerHTML +=
@@ -16,3 +17,19 @@ socket.on("newProduct", (product) => {
         + "</ul>"
         + "<div>";
 });
+
+socket.on("deleteProduct", (id) => {
+    const product = document.getElementById(id);
+    product.remove();
+});
+
+const deleteProduct = async (id) => {
+    // socket.emit("deleteProduct", id);
+    try {
+        const response = await fetch(`http://localhost:8080/realTimeProducts/${id}`, { method: "DELETE" })
+        console.log(response);
+    } catch (e) {
+        console.log(e);
+    }
+
+}

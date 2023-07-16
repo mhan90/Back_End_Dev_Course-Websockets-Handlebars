@@ -3,7 +3,7 @@
 <h1>Products: </h1>
 <div id="list">
     {{#each products}}
-    <div>
+    <div id="{{this.id}}">
         <ul>
             <li><b>id: </b>{{this.id}}</li>
             <li><b>title: </b>{{this.title}}</li>
@@ -14,6 +14,7 @@
             <li><b>stock: </b>{{this.stock}}</li>
             <li><b>category: </b>{{this.category}}</li>
             <li><b>status: </b>{{this.status}}</li>
+            <button onclick="deleteProduct({{this.id}})">delete</button>
         </ul>
     </div>
     {{/each}}

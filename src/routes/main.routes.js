@@ -35,10 +35,22 @@ mainRouter.post("/realTimeProducts", uploader.array("thumbnails"), async (req, r
             const result = await pManager.addProduct(product);
             const _product = (await pManager.getProductById(result.payload.id)).payload;
             req.io.emit("newProduct", _product);
+            res.redirect("/realTimeProducts");
         }
     } catch (e) {
         res.status(500).send({ status: "error while adding new product", error: e });
     }
 });
+
+mainRouter.delete("/realTimeProducts/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        res.send(await pManager.deleteProduct(id));
+        req.io.emit("deleteProduct", id);
+    } catch (e) {
+        res.status(500).send({ status: "error", error: e })
+    }
+});
+
 
 export default mainRouter;
