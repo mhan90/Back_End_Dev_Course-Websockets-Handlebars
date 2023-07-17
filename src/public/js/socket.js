@@ -24,13 +24,9 @@ socket.on("deleteProduct", (id) => {
     product.remove();
 });
 
-const deleteProduct = async (id) => {
-    try {
-        const response = await fetch(`http://localhost:8080/realTimeProducts/${id}`, { method: "DELETE" })
-        console.log(response);
-    } catch (e) {
-        console.log(e);
-    }
+const deleteProduct = (id) => {
+    const url = `http://localhost:8080/realTimeProducts/${id}`;
+    fetch(url, { method: "DELETE" })
 }
 
 const form = document.querySelector('form');
@@ -43,7 +39,6 @@ function handleSubmit(event) {
         method: form.method,
         body: formData
     };
-    console.log(form.title.value);
     fetch(url, fetchOptions);
     form.reset();
     event.preventDefault();

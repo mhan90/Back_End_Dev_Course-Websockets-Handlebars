@@ -22,15 +22,15 @@ const io = new SocketServer(httpServer);
 // Middleware
 app.use((req, res, next) => {
     req.io = io;
-    console.log(`[${req.method}] ${req.url}`);
+    // console.log(`[${req.method}] ${req.url}`);
     next();
 });
 //  Router
 app.use("/", mainRouter);
 // Socket methods
-/* io.on("connection", (socket) => {
-
-}); */
+io.on("connection", (socket) => {
+    console.log(`Client ${socket.id} connected.`);
+});
 // Listen
 httpServer.listen(8080, () => {
     console.log("Server is now listening at port: 8080.");
